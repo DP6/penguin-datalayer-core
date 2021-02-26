@@ -1,6 +1,6 @@
 {
   "name": "@dp6/peguin-datalayer-core",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Core utilizado nas soluções da raft-suite responsável por validações dos eventos da camada de dados",
   "main": "index.js",
   "scripts": {
