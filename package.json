@@ -1,5 +1,5 @@
 {
-  "name": "@dp6/peguin-datalayer-core",
+  "name": "@dp6/penguin-datalayer-core",
   "version": "0.0.1",
   "description": "Core utilizado nas soluções da raft-suite responsável por validações dos eventos da camada de dados",
   "main": "index.js",
@@ -13,7 +13,8 @@
   "keywords": [
     "dp6",
     "raft suite",
-    "peguin datalayer core"
+    "penguin datalayer core",
+    "data quality"
   ],
   "author": "Joaquim Neto | DP6",
   "license": "Apache-2.0",
