@@ -7,7 +7,7 @@
   </a>
 </p>
 <div align="center">
-<img src="https://github.com/DP6/penguin-datalayer-core/tree/master/docs/dist/logo-dp6-cor.png" height="100" />
+<img src="https://raw.githubusercontent.com/DP6/penguin-datalayer-core/master/docs/dist/logo-dp6-cor.png" height="100" />
 
 # penguin-datalayer-core
 </div>
@@ -15,7 +15,7 @@
 O penguin-datalayer-core é o motor de validação do penguin-datalayer que pertence ao ecossitema raf-suite criado pela DP6 para garantir a qualidade dos dados ([Data Quality](https://en.wikipedia.org/wiki/Data_quality)) nos projetos de engenharia de dados implementados nos clientes da DP6, através de monitoramento e pipelines automatizadas de dados.
 
 ## Ecossistema raft-suite
-![DP6](https://github.com/DP6/penguin-datalayer-core/tree/master/docs/dist/abrangencia-ecossistema-raft-suite.jpg)
+![DP6](https://raw.githubusercontent.com/DP6/penguin-datalayer-core/master/docs/dist/abrangencia-ecossistema-raft-suite.jpg)
 
 
 ## 1. Requisitos para utilização
@@ -31,5 +31,5 @@ TODO
 Power by: DP6 Koopa-troopa Team
 Suporte: koopas@dp6.com.br
 
-<img src="https://github.com/DP6/penguin-datalayer-core/tree/master/docs/dist/koopa.jpg" height="100" />
+<img src="https://raw.githubusercontent.com/DP6/penguin-datalayer-core/master/docs/dist/koopa.jpg" height="100" />
 
