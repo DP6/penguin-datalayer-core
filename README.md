@@ -12,7 +12,7 @@
 # penguin-datalayer-core
 </div>
 
-O penguin-datalayer-core é o motor do modulo penguin-datalayer do ecossitema raf-suite criado pela DP6 para garantir a qualidade dos dados ([Data Quality](https://en.wikipedia.org/wiki/Data_quality)) nos projetos de engenharia de dados implementados nos clientes da DP6, através de monitoramento e pipelines automatizadas de dados.
+O penguin-datalayer-core é o motor de validação do penguin-datalayer que pertence ao ecossitema raf-suite criado pela DP6 para garantir a qualidade dos dados ([Data Quality](https://en.wikipedia.org/wiki/Data_quality)) nos projetos de engenharia de dados implementados nos clientes da DP6, através de monitoramento e pipelines automatizadas de dados.
 
 ## Ecossistema raft-suite
 ![DP6](https://github.com/DP6/penguin-datalayer-core/tree/master/docs/dist/abrangencia-ecossistema-raft-suite.jpg)
