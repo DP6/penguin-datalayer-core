@@ -1,4 +1,4 @@
-const schemaParser = require("./schema_parser");
+const schemaParser = require("./schema-parser");
 const Ajv = require("ajv");
 let fullValidation = [];
 
@@ -9,11 +9,24 @@ const ajv = new Ajv({
   ownProperties: true,
 });
 
+/**
+ * 
+ * @param {*} status 
+ * @param {*} message 
+ * @param {*} dlObject 
+ * @param {*} objectName 
+ * @param {*} keyName 
+ */
 function validationResult(status, message, dlObject, objectName, keyName) {
   console.log(`${status}, ${message}, ${dlObject}`);
   fullValidation.push({ status: status, message: message, dataLayerObject: dlObject, objectName: objectName, keyName: keyName});
 }
 
+/**
+ * 
+ * @param {*} schemaItem 
+ * @param {*} dataLayer 
+ */
 function checkValidEvent(schemaItem, dataLayer) {
   for (let index = 0; index < schemaItem.length; index++) {
     //console.log("schema: "+JSON.stringify(schemaItem[index],null,2));
@@ -27,6 +40,15 @@ function checkValidEvent(schemaItem, dataLayer) {
   }
 }
 
+/**
+ * 
+ * @param {*} shadowSchema 
+ * @param {*} errorMessage 
+ * @param {*} dataLayer 
+ * @param {*} schemaIndex 
+ * @param {*} schemaArray 
+ * @param {*} dlObj 
+ */
 function revalidateSchema(
   shadowSchema,
   errorMessage,
@@ -143,6 +165,11 @@ function revalidateSchema(
   };
 }
 
+/**
+ * 
+ * @param {*} schemaItem 
+ * @param {*} dataLayer 
+ */
 function checkMissingProperty(schemaItem, dataLayer) {
   schemaItem.forEach((item, index, arr) => {
     let valid = ajv.validate(item, dataLayer);
@@ -184,6 +211,11 @@ function checkMissingProperty(schemaItem, dataLayer) {
   });
 }
 
+/**
+ * 
+ * @param {*} schemaItem 
+ * @param {*} dataLayer 
+ */
 function checkErrorsPerSchema(schemaItem, dataLayer) {
   schemaItem.forEach((item, index) => {
     let valid = ajv.validate(item, dataLayer);
@@ -231,6 +263,11 @@ function checkErrorsPerSchema(schemaItem, dataLayer) {
   });
 }
 
+/**
+ * 
+ * @param {*} schemaItem 
+ * @param {*} dataLayer 
+ */
 function checkMissingEvents(schemaItem, dataLayer) {
   let missingEvents = schemaParser.parseToDataLayer(schemaItem);
   missingEvents.map((event) => {

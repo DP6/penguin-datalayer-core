@@ -1,3 +1,7 @@
+/**
+ * 
+ * @param {*} event 
+ */
 function parseEvent(event) {
 	let properties = event.properties
 	let keys = Object.keys(properties);
@@ -22,7 +26,10 @@ function parseEvent(event) {
 	return obj;
 }
 
-
+/**
+ * 
+ * @param {*} items 
+ */
 function parseToDataLayer(items) {
 	let dl = items.map(event => parseEvent(event))
 	return dl;

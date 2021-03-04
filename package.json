@@ -2,9 +2,14 @@
   "name": "@dp6/penguin-datalayer-core",
   "version": "0.0.1",
   "description": "Core utilizado nas soluções da raft-suite responsável por validações dos eventos da camada de dados",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DP6/penguin-datalayer-core.git"
+  },
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs": "jsdoc2md *.js > docs/index.md"
   },
   "repository": {
     "type": "git",
@@ -22,14 +27,17 @@
     "url": "https://github.com/DP6/penguin-datalayer-core/issues"
   },
   "homepage": "https://github.com/DP6/penguin-datalayer-core#readme",
+  "release": {
+    "branch": "master"
+  },
   "dependencies": {
     "ajv": "^6.10.2"
   },
   "devDependencies": {
-    "codecov": "^3.5.0",
     "jsdoc": "^3.6.3",
     "jsdoc-fresh": "^1.0.1",
     "jsdoc-region-tag": "^1.0.2",
+    "jsdoc-to-markdown": "^7.0.0",
     "mocha": "^8.0.0"
   }
 }
