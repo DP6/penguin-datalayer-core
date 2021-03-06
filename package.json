@@ -9,11 +9,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docs": "jsdoc2md *.js > docs/index.md"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/DP6/penguin-datalayer-core.git"
+    "docs": "jsdoc2md *.js > docs/functions.md"
   },
   "keywords": [
     "dp6",
