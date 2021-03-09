@@ -57,4 +57,10 @@ describe('datalayer-validation-core', () => {
       assert.isFunction(core.revalidateSchema);
     });
   });
+
+  describe('#trace()', () => {
+    it('Deve ser uma function', () => {
+      assert.isFunction(core.trace);
+    });
+  });
 });

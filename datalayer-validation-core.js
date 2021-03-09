@@ -1,6 +1,6 @@
 const schemaParser = require('./schema-parser');
 const Ajv = require('ajv');
-process.env.PENGUIN_DEBUGGING = process.env.PENGUIN_DEBUGGING || false;
+const debugging = process.env.PENGUIN_DEBUGGING || false;
 let fullValidation = [];
 
 const ajv = new Ajv({
@@ -19,7 +19,7 @@ const ajv = new Ajv({
  * @param {*} keyName
  */
 function validationResult(status, message, dlObject, objectName, keyName) {
-  console.log(`${status}, ${message}, ${dlObject}`);
+  trace(`${status}, ${message}, ${dlObject}, ${objectName}, ${keyName}`);
   fullValidation.push({
     status: status,
     message: message,
@@ -36,8 +36,8 @@ function validationResult(status, message, dlObject, objectName, keyName) {
  */
 function checkValidEvent(schemaItem, dataLayer) {
   for (let index = 0; index < schemaItem.length; index++) {
-    //console.log("schema: "+JSON.stringify(schemaItem[index],null,2));
-    //console.log("datalayer: "+JSON.stringify(dataLayer,null,2));
+    trace('schema: ' + JSON.stringify(schemaItem[index], null, 2));
+    trace('datalayer: ' + JSON.stringify(dataLayer, null, 2));
     let valid = ajv.validate(schemaItem[index], dataLayer);
     if (valid) {
       validationResult('OK', 'Validated Successfully', JSON.stringify(dataLayer, null, 2));
@@ -174,7 +174,7 @@ function checkMissingProperty(schemaItem, dataLayer) {
     let valid = ajv.validate(item, dataLayer);
     let errors = ajv.errors;
 
-    //console.log("retorno ajv", errors)
+    trace(`retorno ajv ${JSON.stringify(err)}"`);
     if (!valid) {
       errors
         .filter((error) => error.schema.constructor === Object && error.keyword === 'required')
@@ -294,6 +294,16 @@ let validate = (schema, dataLayer, callback) => {
   return fullValidation;
 };
 
+/**
+ * Enviado o log para o stdout, se somente se, a variável debugging = true
+ * @param {Object} log Que será apresentado no stdout
+ */
+function trace(log) {
+  if (debugging) {
+    console.log(log);
+  }
+}
+
 module.exports = {
   validate,
   validationResult,
@@ -301,5 +311,6 @@ module.exports = {
   checkErrorsPerSchema,
   checkValidEvent,
   checkMissingProperty,
-  revalidateSchema
+  revalidateSchema,
+  trace,
 };

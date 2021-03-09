@@ -31,11 +31,10 @@ function parseEvent(event) {
  * @param {*} items
  */
 function parseToDataLayer(items) {
-  let dl = items.map((event) => parseEvent(event));
-  return dl;
+  return items.map((event) => parseEvent(event));
 }
 
 module.exports = {
   parseToDataLayer,
-  parseEvent
+  parseEvent,
 };
