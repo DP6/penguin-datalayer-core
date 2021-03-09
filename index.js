@@ -1,1 +1,1 @@
-module.exports = require("./datalayer-validation-core");
+module.exports = require('./datalayer-validation-core');

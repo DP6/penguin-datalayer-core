@@ -8,16 +8,28 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "prettier-format": "prettier --write .",
+    "test-lint": "eslint . && prettier --check .",
+    "unit-test": "mocha ./test/unit  -timeout 8000",
+    "all-test": "npm run unit-test",
+    "test": "npm -- run all-test",
+    "coverage": "nyc --reporter=lcov npm run unit-test",
     "docs": "jsdoc2md *.js > docs/functions.md"
   },
   "keywords": [
     "dp6",
     "raft suite",
     "penguin datalayer core",
-    "data quality"
+    "data quality",
+    "datalayer"
   ],
-  "author": "Joaquim Neto | DP6",
+  "author": "DP6",
+  "contributors": [
+    {
+      "name": "Joaquim Neto",
+      "email": "contato@joaquimsn.com"
+    }
+  ],
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/DP6/penguin-datalayer-core/issues"
@@ -33,7 +45,15 @@
     "jsdoc": "^3.6.3",
     "jsdoc-fresh": "^1.0.1",
     "jsdoc-region-tag": "^1.0.2",
+    "chai": "^4.3.3",
+    "eslint": "^7.21.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
     "jsdoc-to-markdown": "^7.0.0",
-    "mocha": "^8.0.0"
+    "mocha": "^8.3.1",
+    "nyc": "^15.1.0",
+    "prettier": "^2.2.1",
+    "sinon": "^9.2.4",
+    "supertest": "^6.1.3"
   }
 }
