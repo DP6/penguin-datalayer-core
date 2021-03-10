@@ -170,11 +170,11 @@ function revalidateSchema(shadowSchema, errorMessage, dataLayer, schemaIndex, sc
  * @param {*} dataLayer
  */
 function checkMissingProperty(schemaItem, dataLayer) {
-  schemaItem.forEach((item, index, arr) => {
+  schemaItem.forEach((item, index, err) => {
     let valid = ajv.validate(item, dataLayer);
     let errors = ajv.errors;
 
-    trace(`retorno ajv ${JSON.stringify(err)}"`);
+    trace(`retorno ajv ${JSON.stringify(err)}`);
     if (!valid) {
       errors
         .filter((error) => error.schema.constructor === Object && error.keyword === 'required')
