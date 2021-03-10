@@ -39,7 +39,7 @@
     "branch": "master"
   },
   "dependencies": {
-    "ajv": "^6.10.2"
+    "ajv": "^7.2.1"
   },
   "devDependencies": {
     "jsdoc": "^3.6.3",
