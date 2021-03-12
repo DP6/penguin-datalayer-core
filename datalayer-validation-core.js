@@ -1,5 +1,5 @@
 const schemaParser = require('./schema-parser');
-const Ajv = require('ajv');
+const Ajv = require('ajv').default;
 const debugging = process.env.PENGUIN_DEBUGGING || false;
 let fullValidation = [];
 
@@ -170,11 +170,11 @@ function revalidateSchema(shadowSchema, errorMessage, dataLayer, schemaIndex, sc
  * @param {*} dataLayer
  */
 function checkMissingProperty(schemaItem, dataLayer) {
-  schemaItem.forEach((item, index, err) => {
+  schemaItem.forEach((item, index, array) => {
     let valid = ajv.validate(item, dataLayer);
     let errors = ajv.errors;
 
-    trace(`retorno ajv ${JSON.stringify(err)}`);
+    trace(`retorno ajv ${JSON.stringify(array)}`);
     if (!valid) {
       errors
         .filter((error) => error.schema.constructor === Object && error.keyword === 'required')
@@ -193,7 +193,7 @@ function checkMissingProperty(schemaItem, dataLayer) {
               errorMessage.params.missingProperty
             );
           } else {
-            revalidateSchema(shadowSchema, errorMessage, dataLayer, index, arr, dataLayer);
+            revalidateSchema(shadowSchema, errorMessage, dataLayer, index, array, dataLayer);
           }
         });
     }
