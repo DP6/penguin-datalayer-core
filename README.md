@@ -25,13 +25,87 @@ O penguin-datalayer-core é o motor de validação dos modulos penguin-datalayer
 
 ## 1. Requisitos para utilização
 
-### TUDO
+### 1.1 JSON Schema
 
-Geração do schema pelo
+O JSON Schema é uma estrutura que permite a **validação** de documentos JSON. Esta estrutura é utilizada no projeto pois permite a declaração dos formatos de dados esperados dentro da camada de dados, esse estrutura utiliza o modelo da lib Ajv.
 
-### 1.1 Ludwig gerador de Schemas
+#### Tipos Suportados
 
-TODO
+Os seguintes tipos de dados são suportados:
+
+- String
+- Number
+- Boolean
+- Object
+- Array
+
+#### Regras de validação
+
+As seguintes regras para validação são aceitas:
+
+- **Enum (Equals)**: A ser utilizada quando houver a necessidade de validar a **igualdade** entre o valor informado no schema *versus* o que foi enviado para a camada de dados
+- **Pattern (Regex - String)**: É possível criar expressões regulares para validar valores das chaves 
+- **minItems (Array)**: Valida o número mínimo de itens contidos no array
+- **Required**: Quando houver a obrigatoriedade de validar uma determinada chave
+
+
+#### Estrutura do JSON Schema
+
+A estrutura a seguir é um exemplo de um JSON Schema:
+
+```json
+{
+  "$schema": "",
+  "title": "Schema example",
+  "array": {
+    "$id": "#/properties/schema",
+    "type": "array",
+    "items": [
+      {
+        "type": "object",
+        "properties": {
+          "event": {
+            "type": "string",
+            "enum": ["teste"]
+          },
+          "key1": {
+            "type": "object",
+            "properties": {
+              "key1_sub1": {
+                "type": "number",
+                "enum": [10]
+              },
+              "key1_sub2": {
+                "type": "string",
+                "pattern": "teste|test|.*"
+              },
+              "key1_sub3": {
+                "type": "string",
+                "enum": ["producao"]
+              },
+              "key1_sub4": {
+                "type": "boolean",
+                "enum": "desktop|mobile|msite"
+              },
+            },
+            "required": [
+              "key1_sub1",
+              "key1_sub2",
+              "key1_sub3",
+              "key1_sub4"
+            ]
+          }
+        },"required": ["event"]
+      },
+    ]
+  }
+}
+
+```
+
+### 1.2 Ludwig gerador de Schemas
+
+A DP6 possui uma automação para geração estruturada do schema de validação.
 
 ### Api Docs
 
