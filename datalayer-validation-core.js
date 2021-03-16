@@ -1,5 +1,5 @@
 const schemaParser = require('./schema-parser');
-const Ajv = require('ajv').default;
+const Ajv = require('ajv');
 const debugging = process.env.PENGUIN_DEBUGGING || false;
 let fullValidation = [];
 
@@ -277,6 +277,7 @@ function checkMissingEvents(schemaItem, dataLayer) {
  * @param {*} callback Função que será executada após o sucesso da validação, como parâmetro um array com o status das validações
  */
 let validate = (schema, dataLayer, callback) => {
+  fullValidation = [];
   let schemaItem = schema.array.items;
   let isSchemaEmpty = schemaItem.length === 0;
   let isObjEmpty = Object.entries(dataLayer).length === 0 && dataLayer.constructor === Object;
