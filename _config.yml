@@ -1,1 +1,6 @@
-theme: jekyll-theme-minimal
+title: DP6 - Centro de inovações
+
+markdown: kramdown
+remote_theme: dp6/dp6.github.io
+kramdown:
+  syntax_highlighter: rouge
