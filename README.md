@@ -19,8 +19,6 @@
   </a>
 </p>
 
-</div>
-
 O penguin-datalayer-core é o motor de validação dos modulos penguin-datalayer que pertence ao ecossitema raf-suite criado pela DP6 para garantir a qualidade dos dados ([Data Quality](https://en.wikipedia.org/wiki/Data_quality)) nos projetos de engenharia de dados implementados nos clientes, através de monitoramento e pipelines automatizadas de dados, visando garantir a credibilidade, consistência e disponibilidade nas fases de planejamento, coleta e manutenção dos dados.
 
 ## 1. Requisitos para utilização
