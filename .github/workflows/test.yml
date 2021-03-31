@@ -3,6 +3,8 @@ on: [push, pull_request]
 jobs:
   run:
     runs-on: ubuntu-latest
+    env:
+      working_dir: ./
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -25,4 +27,4 @@ jobs:
         uses: codacy/codacy-coverage-reporter-action@master
         with:
           project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
-          coverage-reports: coverage/*
+          coverage-reports: {{env.working_dir}}coverage/*
