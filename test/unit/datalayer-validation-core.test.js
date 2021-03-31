@@ -32,25 +32,25 @@ describe('datalayer-validation-core', () => {
       assert.isFunction(core.checkErrorsPerSchema);
     });
   });
-  
+
   describe('#checkMissingEvents()', () => {
     it('Deve ser uma function', () => {
       assert.isFunction(core.checkMissingEvents);
     });
   });
-  
+
   describe('#checkMissingProperty()', () => {
     it('Deve ser uma function', () => {
       assert.isFunction(core.checkMissingProperty);
     });
   });
-  
+
   describe('#checkValidEvent()', () => {
     it('Deve ser uma function', () => {
       assert.isFunction(core.checkValidEvent);
     });
   });
-  
+
   describe('#revalidateSchema()', () => {
     it('Deve ser uma function', () => {
       assert.isFunction(core.revalidateSchema);

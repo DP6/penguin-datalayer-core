@@ -44,11 +44,10 @@ Os seguintes tipos de dados são suportados:
 
 As seguintes regras para validação são aceitas:
 
-- **Enum (Equals)**: A ser utilizada quando houver a necessidade de validar a **igualdade** entre o valor informado no schema *versus* o que foi enviado para a camada de dados
-- **Pattern (Regex - String)**: É possível criar expressões regulares para validar valores das chaves 
+- **Enum (Equals)**: A ser utilizada quando houver a necessidade de validar a **igualdade** entre o valor informado no schema _versus_ o que foi enviado para a camada de dados
+- **Pattern (Regex - String)**: É possível criar expressões regulares para validar valores das chaves
 - **minItems (Array)**: Valida o número mínimo de itens contidos no array
 - **Required**: Quando houver a obrigatoriedade de validar uma determinada chave
-
 
 #### Estrutura do JSON Schema
 
@@ -87,21 +86,16 @@ A estrutura a seguir é um exemplo de um JSON Schema:
               "key1_sub4": {
                 "type": "boolean",
                 "enum": "desktop|mobile|msite"
-              },
+              }
             },
-            "required": [
-              "key1_sub1",
-              "key1_sub2",
-              "key1_sub3",
-              "key1_sub4"
-            ]
+            "required": ["key1_sub1", "key1_sub2", "key1_sub3", "key1_sub4"]
           }
-        },"required": ["event"]
-      },
+        },
+        "required": ["event"]
+      }
     ]
   }
 }
-
 ```
 
 ### 1.2 Ludwig gerador de Schemas

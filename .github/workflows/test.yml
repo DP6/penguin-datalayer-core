@@ -19,8 +19,8 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           flags: unittests,integrationtest
-          name: codecov-nyc
-            - uses: actions/checkout@master
+      - name: Coverage nyc
+        uses: actions/checkout@master
       - name: Run codacy-coverage-reporter
         uses: codacy/codacy-coverage-reporter-action@master
         with:
