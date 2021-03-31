@@ -33,13 +33,26 @@ build/Release
 
 # Dependency directories
 node_modules/
+_site
+.jekyll-cache
 
 # TypeScript v1 declaration files
 typings/
 
+# Aquivos temporários
+tmp/
+
+# Vscode config
+.vscode/
+!.vscode/settings.json
+
+#terraform
+.terraform/
+*.tfstate*
+*.zip
+
 # Optional npm cache directory
 .npm
-.vscode
 
 # Optional eslint cache
 .eslintcache

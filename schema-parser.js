@@ -1,6 +1,6 @@
 /**
- *
- * @param {*} event
+ *  Converte a chave para objeto de verificação
+ * @param {Object} event
  */
 function parseEvent(event) {
   let properties = event.properties;
@@ -27,8 +27,8 @@ function parseEvent(event) {
 }
 
 /**
- *
- * @param {*} items
+ * Converte a regra de validação para a respesentação da camada de dados.
+ * @param {Object} items
  */
 function parseToDataLayer(items) {
   return items.map((event) => parseEvent(event));

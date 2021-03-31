@@ -17,6 +17,9 @@
   <a href="#badge">
     <img alt="Test" src="https://github.com/dp6/penguin-datalayer-core/actions/workflows/test.yml/badge.svg">
   </a>
+  <a href="https://www.codacy.com/gh/DP6/penguin-datalayer-core/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=DP6/penguin-datalayer-core&amp;utm_campaign=Badge_Grade">
+    <img src="https://app.codacy.com/project/badge/Grade/ac10d2fd82a0471889b151b14e560f20"/>
+  </a>
 </p>
 
 O penguin-datalayer-core é o motor de validação dos modulos penguin-datalayer que pertence ao ecossitema raf-suite criado pela DP6 para garantir a qualidade dos dados ([Data Quality](https://en.wikipedia.org/wiki/Data_quality)) nos projetos de engenharia de dados implementados nos clientes, através de monitoramento e pipelines automatizadas de dados, visando garantir a credibilidade, consistência e disponibilidade nas fases de planejamento, coleta e manutenção dos dados.
