@@ -43,7 +43,7 @@
     "branch": "master"
   },
   "dependencies": {
-    "ajv": "^6.12.6"
+    "ajv": "^8.0.5"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
