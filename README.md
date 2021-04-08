@@ -11,14 +11,12 @@
   <a href="https://www.npmjs.com/package/@dp6/penguin-datalayer-core">
     <img alt="npm latest version" src="https://img.shields.io/npm/v/@dp6/penguin-datalayer-core/latest.svg">
   </a>
-  <a href="https://codecov.io/gh/dp6/penguin-datalayer-core">
-    <img src="https://codecov.io/gh/dp6/penguin-datalayer-core/branch/master/graph/badge.svg?token=5A41M182AJ"/>
-  </a>
+  <a href="https://www.codacy.com/gh/DP6/penguin-datalayer-core/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=DP6/penguin-datalayer-core&amp;utm_campaign=Badge_Coverage"><img alt="Coverage" src="https://app.codacy.com/project/badge/Coverage/ac10d2fd82a0471889b151b14e560f20"/></a>
   <a href="#badge">
     <img alt="Test" src="https://github.com/dp6/penguin-datalayer-core/actions/workflows/test.yml/badge.svg">
   </a>
   <a href="https://www.codacy.com/gh/DP6/penguin-datalayer-core/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=DP6/penguin-datalayer-core&amp;utm_campaign=Badge_Grade">
-    <img src="https://app.codacy.com/project/badge/Grade/ac10d2fd82a0471889b151b14e560f20"/>
+    <img alt="Code Quality" src="https://app.codacy.com/project/badge/Grade/ac10d2fd82a0471889b151b14e560f20"/>
   </a>
 </p>
 

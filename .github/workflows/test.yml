@@ -3,8 +3,6 @@ on: [push, pull_request]
 jobs:
   run:
     runs-on: ubuntu-latest
-    env:
-      working_dir: ./
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -21,10 +19,7 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           flags: unittests,integrationtest
-      - name: Coverage nyc
-        uses: actions/checkout@master
-      - name: Run codacy-coverage-reporter
-        uses: codacy/codacy-coverage-reporter-action@master
-        with:
-          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
-          coverage-reports: {{env.working_dir}}coverage/*
+          name: codecov-nyc
+      - name: Upload coverage to Codacy
+        run: export CODACY_PROJECT_TOKEN=${{ secrets.CODACY_PROJECT_TOKEN }} && bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r coverage/*
+        continue-on-error: true
