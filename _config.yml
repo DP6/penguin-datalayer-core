@@ -1,7 +1,8 @@
 title: DP6 - Centro de inovações
 initiative: 'Penguin Datalayer Core'
 
-markdown: kramdown
 remote_theme: dp6/dp6.github.io
-kramdown:
-  syntax_highlighter: rouge
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-gzip
