@@ -2,6 +2,7 @@ const schemaParser = require('./schema-parser');
 const Ajv = require('ajv');
 const debugging = process.env.PENGUIN_DEBUGGING || false;
 let fullValidation = [];
+let objTreated;
 
 const ajv = new Ajv({
   schemaId: 'auto',
@@ -83,7 +84,7 @@ function revalidateSchema(shadowSchema, errorMessage, dataLayer, schemaIndex, sc
         !isInnerSchemaEmpty &&
         /*ajv.validate(innerSchema, tempObj) &&*/ Object.keys(innerSchema.contains.properties)[0] !== 'event'
       ) {
-        //essa validação tava cagada pq ele tava validando o event no nível de base e fodendo com a porra toda. Isso ainda pode ser um problema mais pra frente se alguém
+        
         validationResult(
           'ERROR',
           `Hit sent without the following property: ${errorMessage.params.missingProperty}`,
@@ -91,8 +92,16 @@ function revalidateSchema(shadowSchema, errorMessage, dataLayer, schemaIndex, sc
           '',
           errorMessage.params.missingProperty
         );
-        if (errorMessage.dataPath.indexOf(Object.keys(schemaArray[schemaIndex].properties)[1]) > -1) {
-          schemaArray.splice(schemaIndex, 1);
+        try {
+          let schemaItemKeys = Object.keys(schemaArray[schemaIndex].properties);
+          if (errorMessage.dataPath.indexOf(schemaItemKeys[1]) > -1) {
+            if (errorMessage.dataPath.indexOf("[0]") > -1) {
+              schemaArray.splice(schemaIndex, 1);
+              objTreated = true
+            }
+          };
+        } catch {
+          console.log("Objeto " + errorMessage.dataPath + " já teve seu erro tratado!!")
         }
       }
     } else {
@@ -141,11 +150,14 @@ function revalidateSchema(shadowSchema, errorMessage, dataLayer, schemaIndex, sc
           errorMessage.params.missingProperty
         );
         // TODO: Avaliar melhor essa lógica
-        if (
-          schemaIndex < schemaArray.length &&
-          errorMessage.dataPath.indexOf(Object.keys(schemaArray[schemaIndex].properties)[1]) > -1
-        ) {
-          schemaArray.splice(schemaIndex, 1);
+        try {
+          let schemaItemKeys = Object.keys(schemaArray[schemaIndex].properties);
+          if (errorMessage.dataPath.indexOf(schemaItemKeys[1]) > -1) {
+            schemaArray.splice(schemaIndex, 1);
+            objTreated = true
+          }
+        } catch {
+          console.log("Objeto " + errorMessage.dataPath + " já teve seu erro tratado!!")
         }
       }
     } else {
@@ -175,7 +187,7 @@ function checkMissingProperty(schemaItem, dataLayer) {
     let errors = ajv.errors;
 
     trace(`retorno ajv ${JSON.stringify(array)}`);
-    if (!valid) {
+    if (!valid && !objTreated) {
       errors
         .filter((error) => error.schema.constructor === Object && error.keyword === 'required')
         .map((eachError) => {
@@ -206,9 +218,12 @@ function checkMissingProperty(schemaItem, dataLayer) {
  * @param {*} dataLayer
  */
 function checkErrorsPerSchema(schemaItem, dataLayer) {
+  let itemTreated = false;
   schemaItem.forEach((item, index) => {
     let valid = ajv.validate(item, dataLayer);
     let errors = ajv.errors;
+
+    if (itemTreated) return;
 
     if (!valid && item.required[1] == Object.keys(dataLayer)[1]) {
       errors
@@ -230,8 +245,7 @@ function checkErrorsPerSchema(schemaItem, dataLayer) {
             case 'enum':
               validationResult(
                 'WARNING',
-                `"${eachError.dataPath.replace(/^\./g, '')}" ${eachError.message}: "${
-                  eachError.schema.length > 1 ? eachError.schema.join(', ') : eachError.schema[0]
+                `"${eachError.dataPath.replace(/^\./g, '')}" ${eachError.message}: "${eachError.schema.length > 1 ? eachError.schema.join(', ') : eachError.schema[0]
                 }", but Hit send: "${eachError.data}"`,
                 JSON.stringify(dataLayer, null, 2),
                 eachError.dataPath,
@@ -254,6 +268,7 @@ function checkErrorsPerSchema(schemaItem, dataLayer) {
           }
         });
       schemaItem.splice(index, 1);
+      itemTreated = true;
     }
   });
 }
@@ -281,12 +296,15 @@ let validate = (schema, dataLayer, callback) => {
   let schemaItem = schema.array.items;
   let isSchemaEmpty = schemaItem.length === 0;
   let isObjEmpty = Object.entries(dataLayer).length === 0 && dataLayer.constructor === Object;
+  objTreated = false;
 
   if (isSchemaEmpty) {
     validationResult('ERROR', `No more items to validate`, JSON.stringify(dataLayer));
   } else if (!checkValidEvent(schemaItem, dataLayer) && !isObjEmpty) {
     checkMissingProperty(schemaItem, dataLayer);
-    checkErrorsPerSchema(schemaItem, dataLayer);
+    if (!objTreated) {
+      checkErrorsPerSchema(schemaItem, dataLayer);
+    }
   } else if (isObjEmpty) {
     checkMissingEvents(schemaItem, dataLayer);
   }
