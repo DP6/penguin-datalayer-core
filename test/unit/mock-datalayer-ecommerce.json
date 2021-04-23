@@ -1,0 +1,64 @@
+[
+  {
+    "event": "checkout",
+    "ecommerce": {
+      "checkout": {
+        "etapa": 1,
+        "tipoFrete": "normal",
+        "prazoEntrega": 4,
+        "cep": "1010000",
+        "valorFreteTotal": 0,
+        "faixaFrete": "0",
+        "tipoVendedor": "b2c",
+        "quantidadeTotal": 2,
+        "produtos": [
+          {
+            "sku": "55014765",
+            "idProduto": "17750149",
+            "nome": "iphone 11 apple 64gb branco tela de 61 camera dupla de 12mp ios",
+            "idLojista": "10037",
+            "tipoVendedor": "b2c",
+            "preco": "4299",
+            "idDepartamento": "38",
+            "nomeDepartamento": "telefones e celulares",
+            "idMarca": "19",
+            "nomeMarca": "apple",
+            "quantidade": 1,
+            "tipoFrete": "normal",
+            "prazoEntrega": 4,
+            "valorFrete": 0
+          },
+          {
+            "sku": "13319410",
+            "idProduto": "9741702",
+            "nome": "ferro a vapor oster 5907 com antiaderente dourado e branco",
+            "idLojista": "10037",
+            "tipoVendedor": "b2c",
+            "preco": 89.99,
+            "idDepartamento": "73",
+            "nomeDepartamento": "eletroportateis",
+            "idMarca": "864",
+            "nomeMarca": "oster",
+            "variacao": "110v",
+            "quantidade": 1,
+            "tipoFrete": "normal",
+            "prazoEntrega": 4,
+            "valorFrete": 0
+          }
+        ]
+      }
+    },
+    "gtm.uniqueEventId": 28
+  },
+  { "event": "gtm.dom", "gtm.uniqueEventId": 33 },
+  {
+    "event": "dcm_checkout",
+    "dcm": {
+      "sku": "55014765",
+      "nome": "iphone 11 apple 64gb branco tela de 61 camera dupla de 12mp ios",
+      "idDepartamento": "38",
+      "preco": 4299
+    },
+    "gtm.uniqueEventId": 151
+  }
+]

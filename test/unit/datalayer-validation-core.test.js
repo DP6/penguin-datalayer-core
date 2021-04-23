@@ -10,14 +10,49 @@ afterEach(): It’s a hook to run after each it() or describe();
 const { assert } = require('chai');
 const chai = require('chai');
 const expect = chai.expect;
-const sinon = require('sinon');
+const fs = require('fs');
 
-const core = require('./../../datalayer-validation-core');
+let core;
+const schemaEcommerce = JSON.parse(fs.readFileSync('test/unit/schema-ecommerce.json').toString());
+const mockDatalayerEcommerce = JSON.parse(fs.readFileSync('test/unit/mock-datalayer-ecommerce.json').toString());
+const schemaGlobal = JSON.parse(fs.readFileSync('test/unit/schema-global.json').toString());
+const mockDatalayerGlobal = JSON.parse(fs.readFileSync('test/unit/mock-datalayer-global.json').toString());
 
 describe('datalayer-validation-core', () => {
+  beforeEach(() => {
+    core = require('./../../datalayer-validation-core');
+  });
   describe('#validate()', () => {
     it('Deve ser uma function', () => {
       assert.isFunction(core.validate);
+    });
+
+    it('Deve validar array de produtos', () => {
+      let result = [];
+      mockDatalayerEcommerce.forEach((eventoDataLayer) => {
+        result = result.concat(core.validate(schemaEcommerce, eventoDataLayer, (i) => {}));
+      });
+      expect(result).to.be.an('array').that.not.empty;
+      expect(result).to.be.an('array').that.have.lengthOf(13);
+      expect(result[12].partialError.occurrences).to.be.equal(10);
+      expect(result[0].message).to.be.equal('Hit sent without the following property: nomeLojista');
+      expect(result[0].status).to.be.equal('ERROR');
+    });
+    it('Deve validar datalayer com dois eventos de sucesso e um erro', () => {
+      let result = [];
+      mockDatalayerGlobal.forEach((eventoDataLayer) => {
+        result = result.concat(core.validate(schemaGlobal, eventoDataLayer, (i) => {}));
+      });
+
+      expect(result).to.be.an('array').that.not.empty;
+      expect(result).to.be.an('array').that.have.lengthOf(3);
+      expect(result[0].partialError.occurrences).to.be.equal(10);
+      expect(result[0].message).to.be.equal('Validated Successfully');
+      expect(result[0].status).to.be.equal('OK');
+      expect(result[1].message).to.be.equal('Validated Successfully');
+      expect(result[1].status).to.be.equal('OK');
+      expect(result[2].message).to.be.equal('Hit ".pagina" sent without the following property: navegacao');
+      expect(result[2].status).to.be.equal('ERROR');
     });
   });
 

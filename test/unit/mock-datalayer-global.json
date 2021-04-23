@@ -1,0 +1,28 @@
+[
+  { "gtm.start": 1619146085504, "event": "gtm.js", "gtm.uniqueEventId": 1 },
+  {
+    "event": "update",
+    "aplicacao": {
+      "bandeira": "br",
+      "dominio": "dp6.com.br",
+      "ambiente": "producao",
+      "device": "desktop",
+      "servidor": "01"
+    },
+    "gtm.uniqueEventId": 2
+  },
+  { "event": "update", "usuario": { "statusLogin": "visitante", "idUsuario": "12345" }, "gtm.uniqueEventId": 3 },
+  {
+    "event": "update",
+    "pagina": {
+      "url": "https://www.dp6.com.br",
+      "nomePagina": "/vitrine/home",
+      "templatePagina": "home",
+      "tituloPagina": "dp6"
+    },
+    "gtm.uniqueEventId": 4
+  },
+  { "event": "gtm.js", "gtm.uniqueEventId": 5 },
+  { "event": "gtm.dom", "gtm.uniqueEventId": 6 },
+  { "event": "gtm.load", "gtm.uniqueEventId": 7 }
+]
