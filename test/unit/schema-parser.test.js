@@ -40,7 +40,7 @@ describe('schema-parser', () => {
     it('Deve transformar o schema de validação código de modelo da camada de dados', () => {
       let result = [];
       result = result.concat(parse.parseToDataLayer(schemaGlobal.array.items));
-      
+
       expect(result).to.be.an('array').that.not.empty;
       expect(result).to.be.an('array').that.have.lengthOf(4);
       expect(result[0].event).to.be.equal('update');
