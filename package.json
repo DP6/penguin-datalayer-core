@@ -59,6 +59,6 @@
     "remark": "^13.0.0",
     "remark-cli": "^9.0.0",
     "remark-preset-lint-recommended": "^5.0.0",
-    "sinon": "^10.0.0"
+    "sinon": "^11.1.1"
   }
 }
