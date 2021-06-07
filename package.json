@@ -43,7 +43,7 @@
     "branch": "master"
   },
   "dependencies": {
-    "ajv": "^6.12.6"
+    "ajv": "^7.2.4"
   },
   "devDependencies": {
     "browserify": "^17.0.0",
