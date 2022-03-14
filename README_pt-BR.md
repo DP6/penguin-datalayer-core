@@ -20,24 +20,17 @@
   </a>
 </p>
 
-### Available Languages
-- [Read this page in English](https://github.com/DP6/penguin-datalayer-core/blob/master/README.md)
-- [Leia esta página em Português](https://github.com/DP6/penguin-datalayer-core/blob/master/README_pt-BR.md)
+O penguin-datalayer-core é o motor de validação dos modulos penguin-datalayer que pertence ao ecossitema raf-suite criado pela DP6 para garantir a qualidade dos dados ([Data Quality](https://en.wikipedia.org/wiki/Data_quality)) nos projetos de engenharia de dados implementados nos clientes, através de monitoramento e pipelines automatizadas de dados, visando garantir a credibilidade, consistência e disponibilidade nas fases de planejamento, coleta e manutenção dos dados.
 
----
-
-The penguin-datalayer-core is the validation engine for the penguin-datalayer modules that belongs to raft-suite ecosystem created by DP6 in order to guarantee the [Data Quality](https://en.wikipedia.org/wiki/Data_quality) of the Data Engineering projects implemented on our clients, which is achieved through monitoring and automated data pipelines to guarantee credibility, consistency and availability in the planning, collection and data maintenance steps.
-
-
-## 1. Requirements for usage
+## 1. Requisitos para utilização
 
 ### 1.1 JSON Schema
 
-The JSON Schema is a structure that allow the **validation** of JSON documents. This structure is used in the project because it allows the declaration of expected data formats in the data layer.
+O JSON Schema é uma estrutura que permite a **validação** de documentos JSON. Esta estrutura é utilizada no projeto pois permite a declaração dos formatos de dados esperados dentro da camada de dados, esse estrutura utiliza o modelo da lib Ajv.
 
-#### Supported Data Types
+#### Tipos Suportados
 
-The following Data Types are currently supported within this module:
+Os seguintes tipos de dados são suportados:
 
 - String
 - Number
@@ -45,19 +38,18 @@ The following Data Types are currently supported within this module:
 - Object
 - Array
 
+#### Regras de validação
 
-#### Validation rules
+As seguintes regras para validação são aceitas:
 
-The following validation rules are accepted:
+- **Enum (Equals)**: A ser utilizada quando houver a necessidade de validar a **igualdade** entre o valor informado no schema _versus_ o que foi enviado para a camada de dados
+- **Pattern (Regex - String)**: É possível criar expressões regulares para validar valores das chaves
+- **minItems (Array)**: Valida o número mínimo de itens contidos no array
+- **Required**: Quando houver a obrigatoriedade de validar uma determinada chave
 
-- **Enum (Equals)**: Should be used to validate the **parity** between the schema value _versus_ the value sent to the data layer;
-- **Pattern (Regex - String)**: Create regular expressions to validate the values of each key;
-- **minItems (Array)**: Validates the minimum itens contained in an array;
-- **Required**: Should be used when a given key is required in the data layer
+#### Estrutura do JSON Schema
 
-#### JSON Schema Structure
-
-The following structure is a JSON Schema example:
+A estrutura a seguir é um exemplo de um JSON Schema:
 
 ```json
 {
@@ -72,7 +64,7 @@ The following structure is a JSON Schema example:
         "properties": {
           "event": {
             "type": "string",
-            "enum": ["test"]
+            "enum": ["teste"]
           },
           "key1": {
             "type": "object",
@@ -87,7 +79,7 @@ The following structure is a JSON Schema example:
               },
               "key1_sub3": {
                 "type": "string",
-                "enum": ["production"]
+                "enum": ["producao"]
               },
               "key1_sub4": {
                 "type": "boolean",
@@ -104,11 +96,9 @@ The following structure is a JSON Schema example:
 }
 ```
 
+### 1.2 Ludwig gerador de Schemas
 
-### 1.2 Ludwig (schema generator)
-
-DP6 owns an automation that generates a structured validation schema.
-
+A DP6 possui uma automação para geração estruturada do schema de validação.
 
 ### Api Docs
 
@@ -116,17 +106,17 @@ DP6 owns an automation that generates a structured validation schema.
 - [datalayer-validation-core.js](https://github.com/dp6/penguin-datalayer-core/blob/master/docs/atalayer-validation-core.md)
 - [schema-parser.js](https://github.com/dp6/penguin-datalayer-core/blob/master/docs/atalayer-validation-core.md)
 
-## How to contribute
+## Como contribuir
 
-Pull requests welcome! We would love some help to evolve this module. Feel free to search for _open issues_. If there's a new _feature_ or _bug_, please open a new _issue_, so our team can follow up.
+Pull requests são bem-vindos! Nós vamos adorar ajuda para evoluir esse modulo. Senta-se livre para navegar por open issues buscando por algo que possa fazer. Caso temha uma nova feature ou bug, por favor abra uma nova issue para ser acompanhada pelo nosso time.
 
-### Prerequirements
+### Requisitos obrigatórios
 
-It will only be accepted contributions that follows the below requirements:
+Só serão aceito as contribuições que estiverem seguindo os seguintes requisitos:
 
 - [Padrão de commit](https://www.conventionalcommits.org/en/v1.0.0/)
 
-## Support:
+## Suporte:
 
 **DP6 Koopa-troopa Team**
 
