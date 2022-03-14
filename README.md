@@ -21,13 +21,13 @@
 </p>
 
 ### Available Languages
+
 - [Read this page in English](https://github.com/DP6/penguin-datalayer-core/blob/master/README.md)
 - [Leia esta página em Português](https://github.com/DP6/penguin-datalayer-core/blob/master/README_pt-BR.md)
 
 ---
 
 The penguin-datalayer-core is the validation engine for the penguin-datalayer modules that belongs to raft-suite ecosystem created by DP6 in order to guarantee the [Data Quality](https://en.wikipedia.org/wiki/Data_quality) of the Data Engineering projects implemented on our clients, which is achieved through monitoring and automated data pipelines to guarantee credibility, consistency and availability in the planning, collection and data maintenance steps.
-
 
 ## 1. Requirements for usage
 
@@ -44,7 +44,6 @@ The following Data Types are currently supported within this module:
 - Boolean
 - Object
 - Array
-
 
 #### Validation rules
 
@@ -104,11 +103,9 @@ The following structure is a JSON Schema example:
 }
 ```
 
-
 ### 1.2 Ludwig (schema generator)
 
 DP6 owns an automation that generates a structured validation schema.
-
 
 ### Api Docs
 
