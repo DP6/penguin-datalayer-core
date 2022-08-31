@@ -72,17 +72,40 @@ describe('datalayer-validation-core', () => {
     it('Deve ser uma function', () => {
       assert.isFunction(core.checkMissingEvents);
     });
-  });
+   
 
   describe('#checkMissingProperty()', () => {
     it('Deve ser uma function', () => {
       assert.isFunction(core.checkMissingProperty);
     });
+    it('Deve validar array', () => {
+      let result = [];
+      mockDatalayerEcommerce.forEach((eventoDataLayer) => {
+        result = result.concat(core.validate(schemaEcommerce, eventoDataLayer, (i) => {}));
+      });
+      expect(result).to.be.an('array').that.not.empty;
+      expect(result).to.be.an('array').that.have.lengthOf(3);
+      expect(result[0].message).to.be.equal("No more items to validate");
+      expect(result[0].status).to.be.equal('ERROR');
+      });
+      
+  });
   });
 
   describe('#checkValidEvent()', () => {
     it('Deve ser uma function', () => {
       assert.isFunction(core.checkValidEvent);
+    });
+    it('Deve validar array', () => {
+      let result = [];
+      mockDatalayerEcommerce.forEach((eventoDataLayer) => {
+        result = result.concat(core.validate(schemaEcommerce, eventoDataLayer, (i) => {}));
+      });
+      expect(result).to.be.an('array').that.not.empty;
+      expect(result).to.be.an('array').that.have.lengthOf(3);
+      expect(result[0].message).to.be.equal('No more items to validate');
+      expect(result[0].status).to.be.equal('ERROR');
+      
     });
   });
 
